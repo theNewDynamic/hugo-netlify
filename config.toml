@@ -1,0 +1,33 @@
+title = "Hugo + Netlify"
+DefaultContentLanguage = "en"
+baseURL = "https://www.example.com"
+
+#Disable Hugo's built-in Alias feature, to utilize Netlify Redirects instead:
+disableAliases = true
+
+#Custom Output formats are outlined here: https://gohugo.io/templates/output-formats
+[mediaTypes]
+[mediaTypes."text/netlify"]
+delimiter = ""
+suffixes = [""]
+
+[outputFormats]
+[outputFormats.HEADERS]
+baseName = "_headers"
+isPlainText = true
+mediatype = "text/netlify"
+notAlternative = true
+
+[outputFormats.REDIR]
+baseName = "_redirects"
+isPlainText = true
+mediatype = "text/netlify"
+notAlternative = true
+
+[outputs]
+home = [
+"HTML",
+"HEADERS",
+"REDIR"
+]
+

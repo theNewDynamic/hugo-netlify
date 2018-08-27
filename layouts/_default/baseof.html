@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="{{ $.Site.LanguageCode | default "en" }}" class="no-js">
+  <head>
+    <title>{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }} </title>    
+    {{ partial "head.html" . }}
+  </head>
+  <body class="{{ with getenv "HUGO_ENV" }} {{ . }}{{ end }}">  
+    <main role="main">    
+      {{ block "main" . }}{{ end }}
+    </main>    
+  </body>
+</html>

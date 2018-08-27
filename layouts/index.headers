@@ -1,0 +1,24 @@
+/*
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block  
+  Content-Security-Policy-report-only: default-src 'self';
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer-when-downgrade
+/*
+
+  {{ $stylesheet :=  $.Scratch.Get "stylesheet" }}    
+  
+  
+
+  {{ with $stylesheet }}    
+    Link: <{{ .Permalink | relURL }}>; rel=preload; as=style nopush
+  {{ end }}
+  
+  
+
+  # Set a long cache expiry on asset urls
+  {{ with $stylesheet }}    
+  {{ .Permalink | relURL }}
+  Cache-Control: public, max-age=31556926
+  {{end }}
+  

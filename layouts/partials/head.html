@@ -1,0 +1,6 @@
+{{ $stylesheet := resources.Get "css/styles.css" }}
+{{ with $stylesheet }}  
+    {{ $stylesheet := . | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $stylesheet.Permalink }}" integrity="{{ $stylesheet.Data.Integrity }}" crossorigin="anonymous"> 
+    {{ $.Scratch.Set "stylesheet" $stylesheet }}    
+{{ end }}
