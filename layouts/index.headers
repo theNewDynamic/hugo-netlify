@@ -1,3 +1,5 @@
+# These items are for demonstration only and you will likely want to change them to suit your needs.
+
 /*
   X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block  
@@ -6,17 +8,17 @@
   Referrer-Policy: no-referrer-when-downgrade
 /*
 
+# Retrieve the stylesheet from our Scratch variable set in our /layouts/partials/head.html file.
   {{ $stylesheet :=  $.Scratch.Get "stylesheet" }}    
   
-  
+# Return the Relative URL of the permalink of file. 
 
   {{ with $stylesheet }}    
+# This items sets a preload link, but does not use H2 Push. See MDN Documentation for more on these topics
     Link: <{{ .Permalink | relURL }}>; rel=preload; as=style nopush
   {{ end }}
-  
-  
 
-  # Set a long cache expiry on asset urls
+  # Set a long cache expiration date on asset urls
   {{ with $stylesheet }}    
   {{ .Permalink | relURL }}
   Cache-Control: public, max-age=31556926

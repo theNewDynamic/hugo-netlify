@@ -1,6 +1,18 @@
+{{/* 
+    We've set up our CSS in the `assets` directory, and will use Hugo's `resources.Get` function to retrieve the file to output*.
+*/}}
 {{ $stylesheet := resources.Get "css/styles.css" }}
 {{ with $stylesheet }}  
-    {{ $stylesheet := . | minify | fingerprint }}
+{{/* if there's a stylesheet (conditional with) Minify and Fingerprint** the file, returning it in our link. */}}
+    {{ $stylesheet := . | resources.Minify | resources.Fingerprint }}
     <link rel="stylesheet" href="{{ $stylesheet.Permalink }}" integrity="{{ $stylesheet.Data.Integrity }}" crossorigin="anonymous"> 
-    {{ $.Scratch.Set "stylesheet" $stylesheet }}    
+    {{/* Set a variable so that we can access the styleseet in our Netlify _header file */}}
+    {{ $.Scratch.Set "stylesheet" $stylesheet }}
 {{ end }}
+
+
+{{/* 
+    * n.b. There's much more we can do with Hugo Pipes than retrieve a CSS file. We can use SASS or PostCSS as well.
+
+    ** For more on fingerprinting/SRI, see https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity
+*/}}

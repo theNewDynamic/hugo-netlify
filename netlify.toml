@@ -1,10 +1,11 @@
 # Build commands here override any commands set in the Netlify Control panel
-
 [build]
 publish = "public"
+# Simple Hugo build command, but here we add flags to clear our asset cache directory and minify our HTML output (released in Hugo 0.47)
 command = "hugo --gc --minify"
 
 [build.environment]
+#https://www.netlify.com/blog/2017/04/11/netlify-plus-hugo-0.20-and-beyond/
 HUGO_VERSION = "0.47.1"
 
 [context.production.environment]
@@ -13,11 +14,16 @@ HUGO_ENV = "production"
 
 [context.deploy-preview]
 HUGO_ENV = "development"
+# using the `baseURL` flag (-b), $DEPLOY_PRIME_URL sets `.Permalink` to the URL of the current BRANCH deploy, 
+
+# eg. for the "Feature" branch, the .Permalink would be set to https://feature--sitename.netlify.com/
 command = "hugo --gc -b $DEPLOY_PRIME_URL"
 
 [context.branch-deploy]
 HUGO_ENV = "development"
-command = "hugo --gc -b $DEPLOY_PRIME_URL"
+# using the `baseURL` flag (-b), $DEPLOY_URL sets `.Permalink` to the URL of the current deploy URL.
+# eg. for the "Feature" branch, the .Permalink would be set to the specific deploy https://5b69tk7bdd18ef0f1d98af6c--sitename.netlify.com/
+command = "hugo --gc -b $DEPLOY_URL"
 
 # https://www.netlify.com/docs/continuous-deployment/#deploy-contexts
-# https://www.netlify.com/blog/2017/04/11/netlify-plus-hugo-0.20-and-beyond/
+
