@@ -14,7 +14,7 @@ This example combines several features of each:
 
 [Pipes](https://gohugo.io/hugo-pipes/) + [Custom Output Formats](https://gohugo.io/templates/output-formats) + [Headers](https://www.netlify.com/docs/headers-and-basic-auth/)
 
-Using Hugo Pipes to output our [CSS file](/blob/master/layouts/partials/head.html)
+Using Hugo Pipes to output our [CSS file](/layouts/partials/head.html)
 
 
 
