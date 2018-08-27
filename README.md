@@ -36,5 +36,7 @@ We will, instead, use Custom Output [Formats](/config.toml#L21) to output a [Red
 
 While you can set build commands through Netlify's control panel. The [netlify.toml](/netlify.toml) file is a handy and portable way to set variables for you all your branches and set up build commands. We'll use Hugo's ENV settings to distinguish between production (master) and other branches.
 
+---
+
 \* _n.b. `Scratch` may be superceded in a future version of Hugo by improvements to its existing variables functionality, in which case, it can be replaced by merely setting a variable._
 
